@@ -15,8 +15,8 @@ function getPersonData(companyCard, $) {
         contactPerson: '',
         website: ''
     };
-    // Searching for positions ****
 
+    // Searching for positions ****
     // Phone position
     let position = tbElements.toLowerCase().search('tel.');
     // wWebsite
@@ -92,7 +92,7 @@ function getPersonData(companyCard, $) {
                 }
             });
             let ws = wb.addWorksheet('Sheet 1', options);
-            // Creating and pushing into cells
+            //  Pushing into cells
             ws.cell(1, 1)
                 .string('Company')
                 .style(styleTwo);
