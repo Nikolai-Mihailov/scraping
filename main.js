@@ -68,6 +68,7 @@ function getPersonData(companyCard, $) {
             $('tbody').each((i, element) => {
                 companyInformation.push(getPersonData(element, $));
             });
+
             let wb = new xl.Workbook();
             // Creating options and styles for exel document
             let options = {
@@ -92,7 +93,6 @@ function getPersonData(companyCard, $) {
             });
             let ws = wb.addWorksheet('Sheet 1', options);
             // Creating and pushing into cells
-
             ws.cell(1, 1)
                 .string('Company')
                 .style(styleTwo);
@@ -116,17 +116,22 @@ function getPersonData(companyCard, $) {
                 .style(styleTwo);
             // Looping true all elements of getPersonData
             companyInformation.map((elements, index) => {
-                ws.cell(index + 2, 1).string(elements.companyName);
-                ws.cell(index + 2, 2).string(elements.address);
-                ws.cell(index + 2, 3).string(elements.phone);
-                ws.cell(index + 2, 4).string(elements.fax);
-                ws.cell(index + 2, 5).string(elements.email);
-                ws.cell(index + 2, 6).string(elements.contactPerson);
-                ws.cell(index + 2, 7).string(elements.website);
+                ws.cell(index + 2, 1).string(elements.companyName)
+                    .style(style);
+                ws.cell(index + 2, 2).string(elements.address)
+                    .style(style);
+                ws.cell(index + 2, 3).string(elements.phone)
+                    .style(style);
+                ws.cell(index + 2, 4).string(elements.fax)
+                    .style(style);
+                ws.cell(index + 2, 5).string(elements.email)
+                    .style(style);
+                ws.cell(index + 2, 6).string(elements.contactPerson)
+                    .style(style);
+                ws.cell(index + 2, 7).string(elements.website)
+                    .style(style);
             });
             wb.write('Excel.xlsx');
-
-
         } else {
             console.log(error);
         }
